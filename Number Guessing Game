@@ -1,0 +1,50 @@
+import java.io.*;
+public class NumberGame
+{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("\tWelcome to the Number Guessing Game\t");
+        System.out.println("\tThere will be 5 attempts to guess the number in each round\t");
+        System.out.println("\tEnter number of rounds you want to play\t");
+        int r=Integer.parseInt(br.readLine());
+        int rn,i,j,w=0,l;
+        System.out.println("\tGame has started\t");
+
+        for(i=1;i<=r;i++)
+        {
+            rn=(int)(Math.random()*101);
+            System.out.println("Round:-"+i);
+            l=0;
+            
+            for(j=1;j<=5;j++)
+            {
+                System.out.println("Attempt:-"+j);
+                System.out.println("\tEnter your guess number:-\t");
+                int g=Integer.parseInt(br.readLine());
+                if(g==rn)
+                {
+                    System.out.println("\tThe guess is correct \n\t You won this round\t");
+                    w++;
+                    break;
+                }
+                else if(g>rn)
+                {
+                    System.out.println("\tThe guess is too high\t");
+                    l++;
+                }
+                else if(g<rn)
+                {
+                    System.out.println("\tThe guess is too low\t");
+                    l++;
+                }
+            }
+            if(l==5)
+            {
+                System.out.println("\n\tYou lost this round \n\t The correct guess is "+rn); 
+            }
+        }
+         System.out.println("\n\tYour final score:- \n\t You won "+w+" round out of "+r+" round\t");
+          System.out.println("\n\tHope you enjoyed the game \n \t Thank You");
+    }
+}
